@@ -1,4 +1,3 @@
-import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from torch.optim import Adam
@@ -6,7 +5,7 @@ import torchvision
 import torchvision.transforms as transforms
 from argparse import ArgumentParser
 from dataset.mnist import MNIST
-from model.UNet import UNet
+from models.UNet_AE import UNet
 from tqdm import tqdm
 import numpy as np
 
@@ -35,7 +34,7 @@ prog_bar = tqdm(train_dataloader)
 prog_bar.set_description("Training Auto-Encoder...")
 
 model.train()
-num_epochs = 10
+num_epochs = 100
 for _ in range(num_epochs):
     for img in prog_bar:
         optimizer.zero_grad()

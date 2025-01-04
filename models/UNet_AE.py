@@ -5,7 +5,7 @@ import torch.nn as nn
 # - normalization: layer norm/group norm
 # - where to put the normalization layer? before conv, before activation
 # - understand the input and output size expectations esp for say ConvTranspose2D
-# - 
+
 
 class UNet(nn.Module):
     def __init__(self, down_channels = [64, 128], in_channel=3) -> None:

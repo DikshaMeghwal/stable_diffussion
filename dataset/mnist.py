@@ -7,7 +7,7 @@ import numpy as np
 
 
 class MNIST(Dataset):
-    def __init__(self, data_dir, split, transforms) -> None:
+    def __init__(self, data_dir, split, transforms=None) -> None:
         super().__init__()
         self.data_dir = data_dir
         self.split = split
@@ -19,6 +19,6 @@ class MNIST(Dataset):
 
     def __getitem__(self, index: Any) -> NDArray:
         image_filename = self.image_filenames[index]
-        img = cv2.cvtColor(cv2.imread(image_filename), cv2.COLOR_BGR2GRAY)
+        img = cv2.cvtColor(cv2.imread(image_filename), cv2.COLOR_BGR2GRAY)      # 28 x 28
         img = np.expand_dims(img, axis=2)
-        return self.transforms(img)
+        return self.transforms(img) if self.transforms is not None else img
